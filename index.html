@@ -111,8 +111,11 @@ main:focus { outline: none; }
   top: 0;
 }
 .header-inner { height: var(--header-h); display: flex; align-items: center; gap: 24px; }
-.logo { display: inline-flex; align-items: center; flex: none; }
+.logo { display: inline-flex; align-items: center; flex: none; text-decoration: none; }
 .logo img { height: 38px; width: auto; }
+.logo-text { font-weight: 800; font-size: 1.6rem; letter-spacing: .12em; color: var(--brand); line-height: 1; }
+.footer-brand .logo-text { font-size: 1.4rem; }
+@media (max-width: 600px) { .logo-text { font-size: 1.35rem; } }
 .logo-fallback { font-weight: 800; padding: 6px 12px; border: 1.5px dashed var(--brand); border-radius: 8px; color: var(--brand); }
 .main-nav ul { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
 .main-nav a { display: block; padding: 8px 12px; border-radius: 999px; color: var(--ink); text-decoration: none; font-weight: 600; font-size: .95rem; }
@@ -319,6 +322,10 @@ main:focus { outline: none; }
 .site-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
 .site-footer nav a, .site-footer nav .link-btn { color: var(--muted); text-decoration: none; font-size: .92rem; }
 .site-footer nav a:hover, .site-footer nav .link-btn:hover { color: var(--brand); text-decoration: underline; }
+.pay-accept { margin-top: 22px; }
+.pay-accept p { font-size: .8rem; font-weight: 700; color: var(--ink); margin: 0 0 10px; }
+.site-footer .pay-icons { display: flex; flex-wrap: wrap; gap: 8px; }
+.pay-icons svg { width: 48px; height: 30px; display: block; border-radius: 4px; box-shadow: var(--shadow-sm); }
 .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); font-size: .82rem; color: var(--muted); }
 .footer-bottom p { margin: 0; }
 
@@ -568,10 +575,9 @@ dialog::backdrop { background: rgba(28, 36, 42, .45); backdrop-filter: blur(2px)
   <!-- ===================== HEADER ===================== -->
   <header class="site-header" id="top">
     <div class="container header-inner">
-      <a href="#home" class="logo" data-nav="home" aria-label="Inkleaf Books home">
-        <!-- Replace assets/logo.svg with the client's logo. Keep width/height auto to preserve proportions. -->
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgNDgiIHdpZHRoPSIyMjAiIGhlaWdodD0iNDgiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iSW5rbGVhZiBCb29rcyAocGxhY2Vob2xkZXIgbG9nbykiPgo8IS0tIFBMQUNFSE9MREVSIExPR086IHJlcGxhY2UgdGhpcyBmaWxlIChhc3NldHMvbG9nby5zdmcpIHdpdGggdGhlIGNsaWVudCdzIHJlYWwgbG9nby4gLS0+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIgNCkiPjxwYXRoIGQ9Ik00IDYgUTIwIDAgMzYgNiBWMzggUTIwIDMyIDQgMzggWiIgZmlsbD0iIzFFNEQ1QyIvPjxwYXRoIGQ9Ik0yMCAzIFYzNSIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjIiLz48Y2lyY2xlIGN4PSIzMSIgY3k9IjEyIiByPSI1IiBmaWxsPSIjRTlCNDRDIi8+PC9nPgo8dGV4dCB4PSI1MiIgeT0iMzEiIGZvbnQtZmFtaWx5PSJNYW5yb3BlLCBIZWx2ZXRpY2EsIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIyIiBsZXR0ZXItc3BhY2luZz0iLTAuNCI+PHRzcGFuIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiMyMDI2MkUiPklua2xlYWY8L3RzcGFuPjx0c3BhbiBmb250LXdlaWdodD0iNTAwIiBmaWxsPSIjMUU0RDVDIj4gQm9va3M8L3RzcGFuPjwvdGV4dD48L3N2Zz4=" alt="Inkleaf Books" width="176" height="38"
-             onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:'Your Logo'}))">
+      <a href="#home" class="logo" data-nav="home" aria-label="Home">
+        <!-- Logo placeholder: replace the LOGO text with the brand logo image. -->
+        <span class="logo-text">LOGO</span>
       </a>
 
       <nav class="main-nav" id="main-nav" aria-label="Main">
@@ -943,9 +949,20 @@ dialog::backdrop { background: rgba(28, 36, 42, .45); backdrop-filter: blur(2px)
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-brand">
-        <a href="#home" data-nav="home" class="logo"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgNDgiIHdpZHRoPSIyMjAiIGhlaWdodD0iNDgiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iSW5rbGVhZiBCb29rcyAocGxhY2Vob2xkZXIgbG9nbykiPgo8IS0tIFBMQUNFSE9MREVSIExPR086IHJlcGxhY2UgdGhpcyBmaWxlIChhc3NldHMvbG9nby5zdmcpIHdpdGggdGhlIGNsaWVudCdzIHJlYWwgbG9nby4gLS0+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIgNCkiPjxwYXRoIGQ9Ik00IDYgUTIwIDAgMzYgNiBWMzggUTIwIDMyIDQgMzggWiIgZmlsbD0iIzFFNEQ1QyIvPjxwYXRoIGQ9Ik0yMCAzIFYzNSIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjIiLz48Y2lyY2xlIGN4PSIzMSIgY3k9IjEyIiByPSI1IiBmaWxsPSIjRTlCNDRDIi8+PC9nPgo8dGV4dCB4PSI1MiIgeT0iMzEiIGZvbnQtZmFtaWx5PSJNYW5yb3BlLCBIZWx2ZXRpY2EsIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIyIiBsZXR0ZXItc3BhY2luZz0iLTAuNCI+PHRzcGFuIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiMyMDI2MkUiPklua2xlYWY8L3RzcGFuPjx0c3BhbiBmb250LXdlaWdodD0iNTAwIiBmaWxsPSIjMUU0RDVDIj4gQm9va3M8L3RzcGFuPjwvdGV4dD48L3N2Zz4=" alt="Inkleaf Books" width="160" height="35"></a>
+        <a href="#home" data-nav="home" class="logo"><span class="logo-text">LOGO</span></a>
         <p>An independent digital bookstore. Practical books and good stories, sold one title at a time.</p>
-        <p class="fine-print">Logo is a placeholder. Replace <code>assets/logo.svg</code> with the brand logo.</p>
+        <div class="pay-accept">
+          <p>We accept debit and credit cards</p>
+          <ul class="pay-icons" aria-label="Accepted cards: Visa, Mastercard, Maestro, American Express">
+            <li><svg viewBox="0 0 48 30" role="img" aria-label="Visa"><rect x=".5" y=".5" width="47" height="29" rx="4" fill="#fff" stroke="#E7E1D8"/><text x="24" y="19.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="800" font-style="italic" fill="#1A1F71">VISA</text><rect x="9" y="22.5" width="30" height="2" fill="#F7B600"/></svg></li>
+            <li><svg viewBox="0 0 48 30" role="img" aria-label="Mastercard"><rect x=".5" y=".5" width="47" height="29" rx="4" fill="#fff" stroke="#E7E1D8"/><circle cx="19.5" cy="15" r="8.5" fill="#EB001B"/><circle cx="28.5" cy="15" r="8.5" fill="#F79E1B"/><path d="M24 7.8a8.5 8.5 0 0 1 0 14.4 8.5 8.5 0 0 1 0-14.4Z" fill="#FF5F00"/></svg></li>
+            <li><svg viewBox="0 0 48 30" role="img" aria-label="Maestro"><rect x=".5" y=".5" width="47" height="29" rx="4" fill="#fff" stroke="#E7E1D8"/><circle cx="19.5" cy="15" r="8.5" fill="#0099DF"/><circle cx="28.5" cy="15" r="8.5" fill="#EB001B"/><path d="M24 7.8a8.5 8.5 0 0 1 0 14.4 8.5 8.5 0 0 1 0-14.4Z" fill="#6C6BBD"/></svg></li>
+            <li><svg viewBox="0 0 48 30" role="img" aria-label="American Express"><rect width="48" height="30" rx="4" fill="#2E77BC"/><text x="24" y="19" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-weight="800" fill="#fff" letter-spacing=".5">AMEX</text></svg></li>
+            <li><svg viewBox="0 0 48 30" role="img" aria-label="Debit card"><rect x=".5" y=".5" width="47" height="29" rx="4" fill="#fff" stroke="#E7E1D8"/><rect x="6" y="8" width="9" height="7" rx="1.5" fill="#E9B44C"/><rect x="6" y="19" width="16" height="2" rx="1" fill="#C9D6D8"/><text x="42" y="14" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="6.5" font-weight="800" fill="#1E4D5C">DEBIT</text></svg></li>
+            <li><svg viewBox="0 0 48 30" role="img" aria-label="Credit card"><rect width="48" height="30" rx="4" fill="#1E4D5C"/><rect x="6" y="8" width="9" height="7" rx="1.5" fill="#E9B44C"/><rect x="6" y="19" width="16" height="2" rx="1" fill="#ffffff" opacity=".5"/><text x="42" y="14" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="6.5" font-weight="800" fill="#fff">CREDIT</text></svg></li>
+          </ul>
+        </div>
+        
       </div>
       <nav aria-label="Catalogue">
         <h2>E-books</h2>
@@ -972,7 +989,7 @@ dialog::backdrop { background: rgba(28, 36, 42, .45); backdrop-filter: blur(2px)
       </nav>
     </div>
     <div class="container footer-bottom">
-      <p>© <span id="year">2026</span> Inkleaf Books (placeholder). All rights reserved.</p>
+      <p>© <span id="year">2026</span> LOGO. All rights reserved.</p>
       <p>Prototype for demonstration. Payments are simulated.</p>
     </div>
   </footer>
